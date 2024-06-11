@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2023 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <string name="app_name">ARDUNİO</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="list_fragment_label">ARDUNİO</string>
+    <string name="detail_fragment_label">Projelere Geri Dön</string>
+
+    <string name="led">LED</string>
+    <string name="buton">BUTON</string>
+    <string name="potas">POTASYOMETRE</string>
+    <string name="servo">SERVO MOTOR</string>
+    <string name="mb">MESAFE ve BUZZER</string>
+    <string name="lcd">LCD</string>
+    <string name="segment">7 SEGMENT DİSPLAY</string>
+
+    <string name="sports_list_subtitle">Ülke kısa genel</string>
+    <string name="sport_detail_text">
+    </string>
+
+
+
+
+    ---------
+    <string name="ledgenel">
+        void setup()
+    {
+        pinMode(6, OUTPUT);
+        pinMode(5, OUTPUT);
+        pinMode(8, OUTPUT);
+        pinMode(9, OUTPUT);
+        pinMode(7, OUTPUT);
+
+        digitalWrite(5, HIGH);
+        digitalWrite(6, LOW);
+        digitalWrite(7, LOW);
+        digitalWrite(8, LOW);
+        digitalWrite(9, HIGH);
+    }
+
+    void loop(){
+  delay(3000); // Wait for 3000 millisecond(s)
+  digitalWrite(6, HIGH);
+  digitalWrite(5, LOW);
+  digitalWrite(8, HIGH);
+  digitalWrite(9, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(6, LOW);
+  digitalWrite(7, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(9, LOW);
+  delay(3000); // Wait for 3000 millisecond(s)
+  digitalWrite(6, HIGH);
+  digitalWrite(7, LOW);
+  digitalWrite(8, HIGH);
+  digitalWrite(9, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(5, HIGH);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(9, HIGH);
+}
+    </string>
+    ---------
+    <string name="butongenel">
+    #define butonPin 2
+#define ledPin 13
+int deger;
+int simdiki,onceki;
+void setup() {
+pinMode(butonPin, INPUT);
+pinMode(ledPin, OUTPUT);
+deger = LOW;
+onceki = LOW;
+}
+void loop() {
+simdiki = digitalRead(butonPin);
+if (onceki == HIGH -VeVe- simdiki == LOW)
+{
+deger = digitalRead(ledPin);
+if (deger == HIGH)
+{ digitalWrite(ledPin, LOW);
+}
+else {
+digitalWrite(ledPin, HIGH);
+}
+}
+onceki=simdiki;
+}
+    </string>
+    ---------
+    <string name="potasgenel">
+        int kirmiziLed=3;
+int sariLed=4;
+int yesilLed=5;
+int a0DigitalDeger=0;
+void setup()
+{
+	pinMode(A0,INPUT);
+  	pinMode(kirmiziLed,OUTPUT);
+  	pinMode(sariLed,OUTPUT);
+  	pinMode(yesilLed,OUTPUT);
+  	Serial.begin(9600);
+}
+
+void loop()
+{
+  a0DigitalDeger=analogRead(A0);
+  Serial.println(a0DigitalDeger);
+  if(a0DigitalDeger(-küçüktür isşareti-)=255)
+  {
+    digitalWrite(kirmiziLed,HIGH);
+    digitalWrite(sariLed,LOW);
+    digitalWrite(yesilLed,LOW);
+  }
+  else if(a0DigitalDeger(-küçüktür isşareti-)=512)
+  {
+    digitalWrite(kirmiziLed,LOW);
+    digitalWrite(sariLed,HIGH);
+    digitalWrite(yesilLed,LOW);
+  }
+  else if(a0DigitalDeger(-küçüktür isşareti-)=1023)
+  {
+    digitalWrite(kirmiziLed,LOW);
+    digitalWrite(sariLed,LOW);
+    digitalWrite(yesilLed,HIGH);
+  }
+
+    delay(100);
+}
+    </string>
+    ---------
+    <string name="servogenel">
+        // Servo Kutuphanesi
+#include _Servo.h_
+// "_" imleç şeklini kullanınız
+
+// Servo motor tanimi
+Servo sg90;
+// Potansiyometre tanimlari
+const byte potansiyometre = A0;
+int pot_deger;
+
+void setup()
+{
+  //Serial Port baslatilir
+  Serial.begin(9600);
+  // Servo pin tanimi
+  sg90.attach(13);
+}
+
+
+void loop()
+{
+  // Pot degerini oku
+  pot_deger = analogRead(potansiyometre);
+  // Servo PVM donusumu
+  int servo_deger = map(pot_deger , 0, 1023, 0, 255);
+
+  //Servoya ilet
+  sg90.write(servo_deger);
+
+  delay(15);
+}
+    </string>
+    ---------
+    <string name="mbgenel">
+        void setup()
+{
+  Serial.begin(9600);
+  pinMode(8, OUTPUT);
+   pinMode(9,INPUT);
+  for(int i=2;i(-küçüktür isşareti-)=7;i++)
+  pinMode(i,OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(8,1); delay(1);
+  digitalWrite(8,0);
+  int sure= pulseIn(9,1);
+  int mesafe =(sure/2)/28.97;
+  Serial.print("olculen mesafe");
+  Serial.println(mesafe);
+  delay(1);
+  if (mesafe(-küçüktür isşareti-)10) digitalWrite(7,1);else digitalWrite(7,0);
+  if (mesafe(-küçüktür isşareti-)10) digitalWrite(2,1);else digitalWrite(2,0);
+  if (mesafe(-küçüktür isşareti-)10) digitalWrite(3,1);else digitalWrite(3,0);
+  if (mesafe(-küçüktür isşareti-)10) digitalWrite(4,1);else digitalWrite(4,0);
+  if (mesafe(-küçüktür isşareti-)10) digitalWrite(5,1);else digitalWrite(5,0);
+  if (mesafe(-küçüktür isşareti-)10) digitalWrite(6,1);else digitalWrite(6,0);
+
+}
+    </string>
+    ---------
+    <string name="lcdgenel">
+        #include _LiquidCrystal_I2C.h_
+        // "_" imleç şeklini kullanınız
+        // LCD nesnesi olusturulur.
+        LiquidCrystal_I2C lcd(0x20,16,2);
+        void setup () {
+        // LCD baslatiliyor
+        lcd.begin(16,2);
+        lcd.init();
+        lcd.backlight();
+        }
+        void loop () {
+        // LCD Cursor yerlestiriliyor
+        lcd.setCursor(0,0);
+         lcd.print("Merhaba Dunya");
+        }
+    </string>
+    ---------w
+    <string name="segmentgenel">
+int a=2;
+int b=3;
+int c=4;
+int d=5;
+int e=6;
+int f=7;
+int g=8;
+int nokta=9;
+void setup()
+{
+  pinMode(a, OUTPUT);
+  pinMode(b, OUTPUT);
+  pinMode(c, OUTPUT);
+  pinMode(d, OUTPUT);
+  pinMode(e, OUTPUT);
+  pinMode(f, OUTPUT);
+  pinMode(g, OUTPUT);
+  pinMode(nokta, OUTPUT);
+}
+
+void loop()
+{
+  sifir();
+  delay(1000);
+  bir();
+  delay(1000);
+  iki();
+  delay(1000);
+  uc();
+  delay(1000);
+  dort();
+  delay(1000);
+  bes();
+  delay(1000);
+  alti();
+  delay(1000);
+  yedi();
+  delay(1000);
+  sekiz();
+  delay(1000);
+  dokuz();
+  delay(1000);
+}
+int sifir(){
+digitalWrite(a, 1);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 1);
+digitalWrite(e, 1);
+digitalWrite(f, 1);
+digitalWrite(g, 0);
+digitalWrite(nokta, 0);
+}
+int bir(){
+digitalWrite(a, 0);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 0);
+digitalWrite(e, 0);
+digitalWrite(f, 0);
+digitalWrite(g, 0);
+digitalWrite(nokta, 0);
+}
+int iki(){
+digitalWrite(a, 1);
+digitalWrite(b, 1);
+digitalWrite(c, 0);
+digitalWrite(d, 1);
+digitalWrite(e, 1);
+digitalWrite(f, 0);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+int uc(){
+digitalWrite(a, 1);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 1);
+digitalWrite(e, 0);
+digitalWrite(f, 0);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+int dort(){
+digitalWrite(a, 0);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 0);
+digitalWrite(e, 0);
+digitalWrite(f, 1);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+int bes(){
+digitalWrite(a, 1);
+digitalWrite(b, 0);
+digitalWrite(c, 1);
+digitalWrite(d, 1);
+digitalWrite(e, 0);
+digitalWrite(f, 1);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+int alti(){
+digitalWrite(a, 1);
+digitalWrite(b, 0);
+digitalWrite(c, 1);
+digitalWrite(d, 1);
+digitalWrite(e, 1);
+digitalWrite(f, 1);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+int yedi(){
+digitalWrite(a, 1);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 0);
+digitalWrite(e, 0);
+digitalWrite(f, 0);
+digitalWrite(g, 0);
+digitalWrite(nokta, 0);
+}
+int sekiz(){
+digitalWrite(a, 1);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 1);
+digitalWrite(e, 1);
+digitalWrite(f, 1);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+int dokuz(){
+digitalWrite(a, 1);
+digitalWrite(b, 1);
+digitalWrite(c, 1);
+digitalWrite(d, 1);
+digitalWrite(e, 0);
+digitalWrite(f, 1);
+digitalWrite(g, 1);
+digitalWrite(nokta, 0);
+}
+    </string>
+    ---------
+
+
+
+
+
+
+    <string name="back_button">Back</string>
+</resources>
